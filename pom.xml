@@ -287,6 +287,43 @@
                     </filesets>
                 </configuration>
             </plugin>
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>rpm-maven-plugin</artifactId>
+              <executions>
+                  <execution>
+                      <id>generate-rpm</id>
+                      <goals><goal>rpm</goal></goals>
+                  </execution>
+              </executions>
+              <configuration>
+                  <group>Applications/Programming</group>
+                  <filemode>755</filemode>
+                  <copyright>LGPL</copyright>
+                  <mappings>
+                      <mapping>
+                          <directory>/etc/streamx</directory>
+                          <configuration>true</configuration>
+                          <sources>
+                              <source><location>target/streamx-${version}-package/etc/streamx</location></source>
+                          </sources>
+                      </mapping>
+                      <mapping>
+                          <directory>/usr/share/doc/streamx</directory>
+                          <documentation>true</documentation>
+                          <sources>
+                              <source><location>target/streamx-${version}-package/share/doc/streamx</location></source>
+                          </sources>
+                      </mapping>
+                      <mapping>
+                          <directory>/usr/share/java/streamx</directory>
+                          <sources>
+                              <source><location>target/streamx-${version}-package/share/java/streamx</location></source>
+                          </sources>
+                      </mapping>
+                  </mappings>
+              </configuration>
+            </plugin>
         </plugins>
 
         <resources>
